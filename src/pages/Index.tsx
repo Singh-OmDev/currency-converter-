@@ -1,6 +1,6 @@
 
 import CurrencyConverter from "@/components/CurrencyConverter";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { Github } from "lucide-react";
 
 const Index = () => {
   return (
@@ -29,7 +29,7 @@ const Index = () => {
               className="inline-flex items-center gap-1.5 text-white/70 hover:text-white transition-colors"
               aria-label="View on GitHub"
             >
-              <GitHubLogoIcon className="h-4 w-4" />
+              <Github className="h-4 w-4" />
               <span>View on GitHub</span>
             </a>
           </div>

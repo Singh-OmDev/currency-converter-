@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,7 +10,8 @@ import {
   popularCurrencies,
   convertCurrency
 } from "@/lib/api";
-import { SwapIcon, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
+import { ArrowLeftRight } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import Loader from "./Loader";
 
@@ -36,7 +36,6 @@ const CurrencyConverter = () => {
         const rate = data.rates[toCurrency];
         setExchangeRate(rate);
         
-        // Calculate the result based on the current amount
         if (amount) {
           const converted = convertCurrency(parseFloat(amount) || 0, data.rates, toCurrency);
           setResult(converted.toFixed(4));
@@ -55,12 +54,10 @@ const CurrencyConverter = () => {
     }
   }, [fromCurrency, toCurrency, amount, toast]);
 
-  // Get exchange rates on initial load and when currencies change
   useEffect(() => {
     getExchangeRates();
   }, [fromCurrency, toCurrency, getExchangeRates]);
 
-  // Handle amount change
   const handleAmountChange = (value: string) => {
     setAmount(value);
     
@@ -72,13 +69,11 @@ const CurrencyConverter = () => {
     }
   };
 
-  // Swap currencies
   const handleSwapCurrencies = () => {
     setFromCurrency(toCurrency);
     setToCurrency(fromCurrency);
   };
 
-  // Find currency objects for the selected currencies
   const fromCurrencyObj = popularCurrencies.find(c => c.code === fromCurrency);
   const toCurrencyObj = popularCurrencies.find(c => c.code === toCurrency);
 
@@ -88,7 +83,6 @@ const CurrencyConverter = () => {
         <CardTitle className="text-xl md:text-2xl text-center">Currency Converter</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        {/* Amount Input */}
         <CurrencyInput
           value={amount}
           onChange={handleAmountChange}
@@ -96,7 +90,6 @@ const CurrencyConverter = () => {
           label="Amount"
         />
 
-        {/* Currency Selectors */}
         <div className="grid grid-cols-[1fr,auto,1fr] gap-2 items-center">
           <CurrencySelect
             currencies={popularCurrencies}
@@ -112,7 +105,7 @@ const CurrencyConverter = () => {
             className="mt-5"
             aria-label="Swap currencies"
           >
-            <SwapIcon className="h-4 w-4" />
+            <ArrowLeftRight className="h-4 w-4" />
           </Button>
 
           <CurrencySelect
@@ -123,7 +116,6 @@ const CurrencyConverter = () => {
           />
         </div>
 
-        {/* Result */}
         <div className="pt-2">
           <CurrencyInput
             value={result}
@@ -134,7 +126,6 @@ const CurrencyConverter = () => {
           />
         </div>
 
-        {/* Bottom Section */}
         <div className="flex justify-between items-center text-xs text-slate-500 pt-1">
           <div className="flex items-center">
             {lastUpdated ? (
@@ -161,7 +152,6 @@ const CurrencyConverter = () => {
           </Button>
         </div>
 
-        {/* Exchange Rate Display */}
         <div className="text-center text-sm text-slate-600 pt-1">
           {exchangeRate > 0 && (
             <p>
