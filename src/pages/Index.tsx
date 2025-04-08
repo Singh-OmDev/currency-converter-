@@ -4,8 +4,8 @@ import { Github } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative bg-gradient-converter">
-      <div className="absolute inset-0 bg-slate-900/5 z-0"></div>
+    <div className="min-h-screen relative bg-gradient-to-br from-gray-900 to-gray-800 dark">
+      <div className="absolute inset-0 bg-black/20 z-0"></div>
       
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-12 px-4">
         <div className="mb-8 text-center">

@@ -56,10 +56,12 @@ const CurrencyConverter = () => {
     }
   }, [fromCurrency, toCurrency, amount, toast]);
 
+  // Fetch rates on mount and when currencies change
   useEffect(() => {
     getExchangeRates();
   }, [fromCurrency, toCurrency, getExchangeRates]);
 
+  // Update result when amount changes (without API call)
   const handleAmountChange = (value: string) => {
     setAmount(value);
     
@@ -80,7 +82,7 @@ const CurrencyConverter = () => {
   const toCurrencyObj = popularCurrencies.find(c => c.code === toCurrency);
 
   return (
-    <Card className="w-full max-w-md shadow-lg">
+    <Card className="w-full max-w-md shadow-lg bg-card">
       <CardHeader className="pb-2">
         <CardTitle className="text-xl md:text-2xl text-center">Currency Converter</CardTitle>
       </CardHeader>
@@ -128,7 +130,7 @@ const CurrencyConverter = () => {
           />
         </div>
 
-        <div className="flex justify-between items-center text-xs text-slate-500 pt-1">
+        <div className="flex justify-between items-center text-xs text-muted-foreground pt-1">
           <div className="flex items-center">
             {isLoading ? (
               <span className="flex items-center gap-1">
@@ -159,7 +161,7 @@ const CurrencyConverter = () => {
           </Button>
         </div>
 
-        <div className="text-center text-sm text-slate-600 pt-1">
+        <div className="text-center text-sm text-muted-foreground pt-1">
           {exchangeRate > 0 && (
             <p>
               1 {fromCurrency} = {exchangeRate.toFixed(4)} {toCurrency}

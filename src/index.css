@@ -91,7 +91,20 @@
   }
 
   body {
-    @apply bg-converter-background text-foreground;
+    @apply bg-background text-foreground;
+  }
+  
+  html.dark {
+    color-scheme: dark;
   }
 }
 
+/* Dark theme gradients */
+.dark .bg-gradient-converter {
+  background: linear-gradient(135deg, #4527a0 0%, #0c2461 100%);
+}
+
+/* Add a glassmorphism effect for the card in dark mode */
+.dark .shadow-lg {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
