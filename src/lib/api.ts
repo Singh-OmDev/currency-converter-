@@ -42,15 +42,18 @@ const API_BASE_URL = "https://api.exchangerate.host";
 // Function to fetch exchange rates
 export const fetchExchangeRates = async (base: string): Promise<ExchangeRateResponse> => {
   try {
+    console.log(`Fetching exchange rates for base currency: ${base}`);
     const response = await fetch(
       `${API_BASE_URL}/latest?base=${base}`
     );
     
     if (!response.ok) {
-      throw new Error("Failed to fetch exchange rates");
+      throw new Error(`Failed to fetch exchange rates: ${response.statusText}`);
     }
     
-    return await response.json();
+    const data = await response.json();
+    console.log("Exchange rate data received:", data);
+    return data;
   } catch (error) {
     console.error("Error fetching exchange rates:", error);
     throw error;
@@ -64,6 +67,7 @@ export const convertCurrency = (
   toCurrency: string
 ): number => {
   if (!rates || !rates[toCurrency]) {
+    console.warn(`No rate found for ${toCurrency}`);
     return 0;
   }
   

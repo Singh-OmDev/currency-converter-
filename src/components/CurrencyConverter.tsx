@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,7 +22,7 @@ const CurrencyConverter = () => {
   const [toCurrency, setToCurrency] = useState("EUR");
   const [result, setResult] = useState("0");
   const [exchangeRate, setExchangeRate] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const { toast } = useToast();
 
@@ -44,6 +45,7 @@ const CurrencyConverter = () => {
         setLastUpdated(new Date().toLocaleTimeString());
       }
     } catch (error) {
+      console.error("Error fetching exchange rates:", error);
       toast({
         title: "Error",
         description: "Failed to fetch exchange rates. Please try again.",
@@ -128,10 +130,15 @@ const CurrencyConverter = () => {
 
         <div className="flex justify-between items-center text-xs text-slate-500 pt-1">
           <div className="flex items-center">
-            {lastUpdated ? (
+            {isLoading ? (
+              <span className="flex items-center gap-1">
+                <Loader size="sm" />
+                Loading data...
+              </span>
+            ) : lastUpdated ? (
               <span>Updated: {lastUpdated}</span>
             ) : (
-              <span>Loading data...</span>
+              <span>No data available</span>
             )}
           </div>
 
