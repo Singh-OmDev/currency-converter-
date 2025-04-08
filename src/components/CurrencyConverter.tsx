@@ -43,6 +43,14 @@ const CurrencyConverter = () => {
         }
         
         setLastUpdated(new Date().toLocaleTimeString());
+        
+        // Show success toast on first load
+        if (isLoading) {
+          toast({
+            title: "Exchange rates loaded",
+            description: `Exchange rates for ${fromCurrency} updated successfully.`,
+          });
+        }
       }
     } catch (error) {
       console.error("Error fetching exchange rates:", error);
@@ -54,7 +62,7 @@ const CurrencyConverter = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [fromCurrency, toCurrency, amount, toast]);
+  }, [fromCurrency, toCurrency, amount, toast, isLoading]);
 
   // Fetch rates on mount and when currencies change
   useEffect(() => {

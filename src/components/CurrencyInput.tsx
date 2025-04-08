@@ -40,10 +40,10 @@ const CurrencyInput = ({
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-slate-700">{label}</label>
+      <label className="text-sm font-medium text-slate-700 dark:text-slate-300">{label}</label>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <span className="text-gray-500">{currency?.symbol || ''}</span>
+          <span className="text-gray-500 dark:text-gray-400">{currency?.symbol || ''}</span>
         </div>
         <Input
           type="text"
@@ -51,7 +51,9 @@ const CurrencyInput = ({
           value={displayValue}
           onChange={handleChange}
           readOnly={readOnly}
-          className={`pl-8 h-12 bg-white border-slate-200 ${readOnly ? 'bg-gray-50' : ''}`}
+          className={`pl-8 h-12 bg-white dark:bg-gray-800 border-slate-200 dark:border-slate-700 ${
+            readOnly ? 'bg-gray-50 dark:bg-gray-900' : ''
+          }`}
         />
       </div>
     </div>

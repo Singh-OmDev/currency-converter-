@@ -24,9 +24,9 @@ const CurrencySelect = ({
 }: CurrencySelectProps) => {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-slate-700">{label}</label>
+      <label className="text-sm font-medium text-slate-700 dark:text-slate-300">{label}</label>
       <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className="bg-white border-slate-200 h-12">
+        <SelectTrigger className="bg-white dark:bg-gray-800 border-slate-200 dark:border-slate-700 h-12">
           <SelectValue placeholder="Select Currency" />
         </SelectTrigger>
         <SelectContent className="max-h-[300px]">
@@ -35,7 +35,7 @@ const CurrencySelect = ({
               <SelectItem key={currency.code} value={currency.code}>
                 <div className="flex items-center gap-2">
                   <span>{currency.code}</span>
-                  <span className="text-slate-500 text-sm">- {currency.name} {currency.symbol && `(${currency.symbol})`}</span>
+                  <span className="text-slate-500 dark:text-slate-400 text-sm">- {currency.name} {currency.symbol && `(${currency.symbol})`}</span>
                 </div>
               </SelectItem>
             ))}

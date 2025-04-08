@@ -36,15 +36,15 @@ export const popularCurrencies: Currency[] = [
   { code: "ZAR", name: "South African Rand", symbol: "R" },
 ];
 
-// Exchange Rate API Base URL
-const API_BASE_URL = "https://api.exchangerate.host";
+// Exchange Rate API Base URL - Switched to a free API that doesn't require an API key
+const API_BASE_URL = "https://open.er-api.com/v6";
 
 // Function to fetch exchange rates
 export const fetchExchangeRates = async (base: string): Promise<ExchangeRateResponse> => {
   try {
     console.log(`Fetching exchange rates for base currency: ${base}`);
     const response = await fetch(
-      `${API_BASE_URL}/latest?base=${base}`
+      `${API_BASE_URL}/latest/${base}`
     );
     
     if (!response.ok) {
@@ -53,7 +53,16 @@ export const fetchExchangeRates = async (base: string): Promise<ExchangeRateResp
     
     const data = await response.json();
     console.log("Exchange rate data received:", data);
-    return data;
+    
+    // Transform the API response to match our expected format
+    const transformedData: ExchangeRateResponse = {
+      success: true,
+      base: data.base_code,
+      date: data.time_last_update_utc,
+      rates: data.rates || {}
+    };
+    
+    return transformedData;
   } catch (error) {
     console.error("Error fetching exchange rates:", error);
     throw error;
