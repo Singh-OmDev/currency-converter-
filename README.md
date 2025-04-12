@@ -8,7 +8,8 @@ A sleek and responsive currency converter web application built with **Vite**, *
 
 ## 📸 Screenshots
 
-![Screenshot](https://currency-converter-nine-olive.vercel.app/og-image.png)
+![image](https://github.com/user-attachments/assets/c8030e78-8339-4800-b988-c10de56ac829)
+
 
 ## 🛠 Tech Stack
 
