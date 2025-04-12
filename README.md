@@ -1,46 +1,31 @@
-# currency-converter-
+# 💱 Currency Converter
 
+A sleek and simple currency converter web app that allows users to convert between major global currencies in real-time.
 
-    🌍 Flow Currency Glide
-A real-time, responsive currency converter built using:
+---
 
-⚡ Vite for fast build and dev experience
-🧠 React for UI components and state management
-🎨 ShadCN UI for modern, elegant UI components
-📦 Framer Motion for animations
-🌙 Dark mode support
-🔁 Live conversion using exchangerate.host
-🚀 Features
-🌐 Supports major global currencies
-🔁 Swap currency with a single click
-💡 Real-time conversion updates
-🎨 Light & dark theme toggle
-⚙️ Smooth animations using Framer Motion
-📸 Preview
-App Preview
+## ✨ Features
 
-🛠️ Installation
-git clone https://github.com/your-username/flow-currency-glide.git
-cd flow-currency-glide
-npm install
-npm run dev
-About
-real time currency-converter
+- 🔄 Real-time exchange rate conversion
+- 🌐 Supports multiple currencies
+- 📱 Responsive UI for all screen sizes
+- ⚡ Built with modern web technologies
 
-Resources
- Readme
- Activity
-Stars
- 0 stars
-Watchers
- 1 watching
-Forks
- 0 forks
-Releases
-No releases published
-Create a new release
-Packages
-No packages published
-Publish your first package
-Footer
-© 2025 GitHub, Inc.
+---
+
+## 🛠️ Tech Stack
+
+- **React** – UI library
+- **Vite** – Lightning-fast build tool
+- **Tailwind CSS** *(optional)* – For styling
+- **ExchangeRate API** or similar – For fetching real-time currency data
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Singh-OmDev/currency-converter-.git
+cd currency-converter-
