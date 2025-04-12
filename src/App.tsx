@@ -10,7 +10,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Make sure dark mode is consistently applied
+  
   if (!document.documentElement.classList.contains('dark')) {
     document.documentElement.classList.add('dark');
   }
